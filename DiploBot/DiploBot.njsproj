@@ -34,7 +34,6 @@
     <Content Include=".gitignore" />
     <Content Include="Diplomacy\Action.js" />
     <Content Include="Diplomacy\bot.js" />
-    <Content Include="Diplomacy\config.js" />
     <Content Include="Diplomacy\DiscordHelper.js" />
     <Content Include="Diplomacy\DiscordParser.js" />
     <Content Include="Diplomacy\Location.js" />
