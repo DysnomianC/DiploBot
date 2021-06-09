@@ -44,6 +44,9 @@
     <Content Include="Diplomacy\Parser.js" />
     <Content Include="Diplomacy\Parser.test.js" />
     <Content Include="Diplomacy\Resolver.js" />
+    <Content Include="Diplomacy\state.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Diplomacy\StringAssistant.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
