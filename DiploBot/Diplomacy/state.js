@@ -20,7 +20,7 @@ const nations = [
 		channel_id: france_id,
 		orders: new Array(),
 		done_status: false,
-		alive: false,
+		alive: true,
 	},
 	{
 		name: "Italy",
@@ -29,7 +29,7 @@ const nations = [
 		channel_id: italy_id,
 		orders: new Array(),
 		done_status: false,
-		alive: false,
+		alive: true,
 	},
 	{
 		name: "Austria-Hungary",
@@ -38,7 +38,7 @@ const nations = [
 		channel_id: ah_id,
 		orders: new Array(),
 		done_status: false,
-		alive: false,
+		alive: true,
 	},
 	{
 		name: "Turkey",
@@ -47,7 +47,7 @@ const nations = [
 		channel_id: turk_id,
 		orders: new Array(),
 		done_status: false,
-		alive: false,
+		alive: true,
 	},
 	{
 		name: "Russia",
@@ -56,7 +56,7 @@ const nations = [
 		channel_id: rus_id,
 		orders: new Array(),
 		done_status: false,
-		alive: false,
+		alive: true,
 	},
 	{
 		name: "Germany",
@@ -65,7 +65,7 @@ const nations = [
 		channel_id: germ_id,
 		orders: new Array(),
 		done_status: false,
-		alive: false,
+		alive: true,
 	},
 	{
 		name: "England",
@@ -74,7 +74,7 @@ const nations = [
 		channel_id: eng_id,
 		orders: new Array(),
 		done_status: false,
-		alive: false,
+		alive: true,
 	},
 ];
 
@@ -124,7 +124,7 @@ const MarkUndone = function (nation) {
 };
 
 let state = {
-	Nations = nations,
+	Nations: nations,
 	AreAllAliveNationsDone,
 	ClearOrders,
 	GetAliveNations,	

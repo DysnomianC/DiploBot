@@ -66,9 +66,9 @@ function ProcessMessage(receivedMessage) {
 
     for (const nation of State.Nations) {
         if (receivedMessage.channel.id === nation.channel_id) {
-            if (message.content.toLowerCase().startsWith(done_string)) {
+            if (receivedMessage.content.toLowerCase().startsWith(done_string)) {
                 ProcessMarkDone(nation);
-            } else if (message.content.toLowerCase().startsWith(undone_string)) {
+            } else if (receivedMessage.content.toLowerCase().startsWith(undone_string)) {
                 ProcessMarkUndone(nation);
             } else {
                 ProcessAddOrder(nation, receivedMessage);
@@ -83,27 +83,20 @@ function ProcessMessageEdit(oldMessage, newMessage) {
     }, new Array());
 
     // Take first element that matches, if falsey then use null.
-    const message_to_edit = all_orders.filter((order) => order.id === newMessage.id)[0] || null;
-    if (message_to_edit != null) {
-        message_to_edit.content = newMessage.content;
+    const messageToEdit = all_orders.filter((order) => order.id === newMessage.id)[0] || null;
+    if (messageToEdit != null) {
+        messageToEdit.content = newMessage.content;
 
-        let msg = "A message from " + message_to_edit.nation.name + " was edited";
+        let msg = "A message from " + messageToEdit.nation.name + " was edited";
         if (is_debug)
             msg += " from \"" + oldMessage.content + "\" to \"" + newMessage.content + "\"";
         Log(msg);
     } else {
         let messageForNation = State.Nations.filter(nation => nation.channel_id === receivedMessage.channel.id)[0] || null;
         if (messageForNation != null) {
-            let msg = "A message for " +
-                nation.name +
-                " was edited but it wasn't stored in our list of orders so nothing happened.";
+            let msg = "A message for " + nation.name + " was edited but it wasn't stored in our list of orders so nothing happened.";
             if (is_debug) {
-                msg +=
-                    "\r\nThe message was edited from \"" +
-                    oldMessage.content +
-                    "\" to \"" +
-                    newMessage.content +
-                    "\"";
+                msg += "\r\nThe message was edited from \"" + oldMessage.content + "\" to \"" + newMessage.content + "\"";
             }
             Log(msg);
             return;
@@ -129,7 +122,7 @@ function ProcessAddOrder(nation, message) {
     if (is_debug)
         msg += ` saying "${message.content}"`;
     Log(msg);
-    PrintNation(nation);
+    State.PrintNation(nation);
 }
 
 function ProcessCommand(message) {
@@ -142,7 +135,7 @@ function ProcessMarkDone(nation) {
     if (State.AreAllAliveNationsDone()) {
         const delay = 3000 + Math.random() * 7000;
         timeout_id_do_the_thing = setInterval(function () {
-            if (AreAllDone()) {
+            if (State.AreAllAliveNationsDone()) {
                 DoTheThing();
                 timeout_id_do_the_thing = null;
             } else {
