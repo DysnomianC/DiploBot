@@ -1,0 +1,20 @@
+{
+    "name": "diplo-bot",
+    "version": "1.1.0",
+    "description": "A discord bot for running games of Diplomacy.",
+    "main": "bot.js",
+    "type": "module",
+    "author": {
+        "name": "Dysnomian"
+    },
+    "dependencies": {
+        "discord.js": "^12.5.3",
+        "moment": "^2.29.1"
+    },
+    "devDependencies": {
+        "jest": "^27.0.4"
+    },
+    "scripts": {
+        "test": "jest"
+    }
+}
